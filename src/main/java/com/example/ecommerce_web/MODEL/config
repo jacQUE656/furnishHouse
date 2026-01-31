@@ -1,39 +1,42 @@
 server:
   port: 6060
 spring:
-  profiles:
-    active: dev
-    jpa:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/furnish_house
+    username: root
+    password: jacQUE:56
+  jpa:
       open-in-view: false
       generate-ddl: true
       show-sql: true
       hibernate:
         ddl-auto: create
-        properties:
+      properties:
           hibernate:
             globally-quoted-identifiers: true
             dialect: org.hibernate.dialect.MySQLDialect
             format-sql: true
-            servlet:
-              multipart:
+  servlet:
+          multipart:
                 enable: true
                 max-file-size: 100MB
                 max-request-size: 100MB
-                mail:
-                  host: smtp.gmail.com
-                  port: 587
-                  username: jamestonibor65@gamil.com
-                  password: sqbbtkmaovuvajva
-                  default-encoding: UTF-8
-                  properties:
-                    mail:
-                      mime:
-                        charset: UTF
-                        smtp:
-                          auth: true
-                          starttls:
+  mail:
+       host: smtp.gmail.com
+       port: 587
+       username: jamestonibor65@gamil.com
+       password: sqbbtkmaovuvajva
+       default-encoding: UTF-8
+       properties:
+          mail:
+              mime:
+                   charset: UTF
+               smtp:
+                    auth: true
+                    starttls:
                             enable: true
-                            required: true
+                             required: true
                           connectiontimeout: 5000
                           timeout: 3000
                           writetimeout: 5000
@@ -45,9 +48,9 @@ spring:
                                 path: /user/error
                                 whitelabel:
                                   enabled: false
-                                  api-prefix: /api/v1
-                                  jwt-secrete: 76765387af723bc14cdcc45223a92004a03731d73026a7ebcd2143cef665696e
-                                  jwt-expiration: 360000
+api-prefix: /api/v1
+jwt-secrete: 76765387af723bc14cdcc45223a92004a03731d73026a7ebcd2143cef665696e
+jwt-expiration: 360000
 
 
 
